@@ -85,7 +85,6 @@
     <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Models\HelpItem.cs" />
     <Compile Include="Models\Topic.cs" />
-    <Compile Include="Providers\LayerHelpProvider2.cs" />
     <Compile Include="Providers\LayerHelpProvider.cs" />
     <Compile Include="Providers\HelpProvider.cs" />
     <Compile Include="Providers\IHelpProvider.cs" />
