@@ -1,0 +1,21 @@
+﻿@using CJP.Help.Models;
+@model IEnumerable<HelpItem>
+
+@{
+    Layout.Title = T("Help");
+}
+
+@Html.ActionLink("« Back", "Index")
+
+@foreach (var item in Model)
+{
+    <div>
+        <h3>@item.Title</h3>
+        <p>
+            @item.FullText
+        </p>
+    </div>
+    <hr/>
+}
+
+@Html.ActionLink("« Back", "Index")

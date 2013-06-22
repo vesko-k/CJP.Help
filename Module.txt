@@ -1,10 +1,11 @@
 ﻿Name: CJP.Help
 AntiForgery: enabled
-Author: The Orchard Team
-Website: http://orchardproject.net
+Author: Christopher John Payne
+Website: https://github.com/paynecrl97
 Version: 1.0
 OrchardVersion: 1.0
-Description: Description for the module
+Description: Provides a way for your own modules to easily provide documentation / help to your users
 Features:
     CJP.Help:
-        Description: Description for feature CJP.Help.
+		Name: Help!
+        Description: Provides a way for your own modules to easily provide documentation / help to your users
