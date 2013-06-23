@@ -7,5 +7,10 @@ OrchardVersion: 1.0
 Description: Provides a way for your own modules to easily provide documentation / help to your users
 Features:
     CJP.Help:
-		Name: Help!
+		Name: Help
         Description: Provides a way for your own modules to easily provide documentation / help to your users
+		Dependencies: Markdown
+    CJP.Help.OrchardDocs:
+		Name: Orchard Docs
+        Description: Experimental feature to pull the Orchard Docs repository into the Help section
+		Dependencies: Markdown, CJP.Help

@@ -5,12 +5,33 @@
     Layout.Title = T("Help");
 }
 
+@using (Script.Head())
+{
+    <style type="text/css">
+        code, pre {
+	        font-family: Courier New, Lucida Console, Monospace;
+	        font-size:95%;
+	        color: #000000;
+	        padding: 0px;
+	        margin: 0px;
+        }
+
+        pre {
+            border: dashed 1px #999999;
+            background-color: #FFFFF0;
+            margin: 10px 0;
+            padding: 8px;
+            overflow: auto;
+        }
+    </style>
+}
+
 @Html.ActionLink("« Back", "Index")
 
 @foreach (var item in Model)
 {
     <div>
-        <h3>@item.Title</h3>
+        <h1>@item.Title</h1>
         <p>
             @item.FullText
         </p>
