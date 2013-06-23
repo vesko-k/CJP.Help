@@ -2,7 +2,7 @@
 AntiForgery: enabled
 Author: Christopher John Payne
 Website: https://github.com/paynecrl97
-Version: 1.0
+Version: 0.1
 OrchardVersion: 1.0
 Description: Provides a way for your own modules to easily provide documentation / help to your users
 Features:
