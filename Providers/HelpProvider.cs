@@ -1,17 +1,33 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using CJP.Help.Models;
+using Orchard.Environment.Descriptor.Models;
+using Orchard.Environment.Features;
+using Orchard.FileSystems.VirtualPath;
 using Orchard.Localization;
 
 namespace CJP.Help.Providers
 {
     public class HelpProvider : IHelpProvider
     {
+        private readonly IVirtualPathProvider _virtualPathProvider;
         public Localizer T { get; set; }
+
+        public HelpProvider(IVirtualPathProvider virtualPathProvider)
+        {
+            _virtualPathProvider = virtualPathProvider;
+        }
 
         public IEnumerable<Topic> Topics
         {
             get
             {
+                var helpFile = _virtualPathProvider.Combine("~/Modules", "CJP.Help", "Help", "AdditionalFiles", "ExtensionMethods.markdown");
+                helpFile = _virtualPathProvider.MapPath(helpFile);
+
+                if (!File.Exists(helpFile)) return null;
+
                 return new[]
                     {
                         new Topic
@@ -22,21 +38,11 @@ namespace CJP.Help.Providers
                                     {
                                         new HelpItem
                                             {
-                                                Identifier = "Welcome",
-                                                Title = T("Welcome to the Help module"),
-                                                FullText = T("The help section is here to guide you through Orchard and any third party modules that you may have installed"),
-                                            },
-                                        new HelpItem
-                                            {
-                                                Identifier = "Welcome",
-                                                Title = T("Welcome to the Help module2"),
-                                                FullText = T("This help item has the same identifier as the welcome message"),
-                                            },
-                                        new HelpItem
-                                            {
-                                                Identifier = "Welcome",
-                                                Title = T("I am looking for help with something that is not covered here. What should I do?"),
-                                                FullText = T("If you have found something that is not covered, chances are that the developer of the module you are using has not yet implement help pages for it. You should probably let them know by heading over to the homepage for the module and ask the user to provide help."),
+                                                Identifier = "How-to-provide-help-documentation-for-your-own-modules",
+                                                Title = T(""),
+                                                TextFlavor = "markdown",
+                                                Position = 1,
+                                                FullText = T(File.ReadAllText(helpFile)),
                                             },
                                     }
                             }

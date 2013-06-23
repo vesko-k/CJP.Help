@@ -23,20 +23,39 @@
             padding: 8px;
             overflow: auto;
         }
+
+        #helpArea h1, #helpArea h2, #helpArea h3 {
+	        border-bottom:1px dashed #e4e7dc;
+	        padding-bottom: 2px;
+	        margin-bottom: 8px !important;
+            margin-top: 19px !important;
+        }
+
+        #helpArea p, #helpArea ul, #helpArea ol {
+            margin-bottom: 5px;
+        }
+
+        ul {
+            list-style:square;
+        }
     </style>
 }
 
 @Html.ActionLink("« Back", "Index")
 
-@foreach (var item in Model)
-{
-    <div>
-        <h1>@item.Title</h1>
-        <p>
-            @item.FullText
-        </p>
-    </div>
-    <hr/>
-}
+<div id="helpArea">
+    @foreach (var item in Model)
+    {
+        <div>
+            @if (!string.IsNullOrEmpty(item.Title.Text))
+            {
+                <h1>@item.Title</h1>
+            }
+            <p>
+                @item.FullText
+            </p>
+        </div>
+    }
+</div>
 
 @Html.ActionLink("« Back", "Index")

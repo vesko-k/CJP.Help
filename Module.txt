@@ -1,4 +1,4 @@
-﻿Name: CJP.Help
+﻿Name: Help
 AntiForgery: enabled
 Author: Christopher John Payne
 Website: https://github.com/paynecrl97

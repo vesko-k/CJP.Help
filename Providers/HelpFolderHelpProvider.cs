@@ -3,26 +3,22 @@ using System.IO;
 using System.Linq;
 using CJP.Help.Models;
 using Orchard.Environment.Descriptor.Models;
-using Orchard.Environment.Extensions;
 using Orchard.Environment.Features;
 using Orchard.FileSystems.VirtualPath;
 using Orchard.Localization;
-using Orchard.Utility.Extensions;
 
 namespace CJP.Help.Providers
 {
     public class HelpFolderHelpProvider : IHelpProvider
     {
         private readonly IVirtualPathProvider _virtualPathProvider;
-        private readonly IExtensionManager _extensionManager;
         private readonly IFeatureManager _featureManager;
         private readonly ShellDescriptor _shellDescriptor;
         public Localizer T { get; set; }
 
-        public HelpFolderHelpProvider(IVirtualPathProvider virtualPathProvider, IExtensionManager extensionManager, IFeatureManager featureManager, ShellDescriptor shellDescriptor )
+        public HelpFolderHelpProvider(IVirtualPathProvider virtualPathProvider, IFeatureManager featureManager, ShellDescriptor shellDescriptor )
         {
             _virtualPathProvider = virtualPathProvider;
-            _extensionManager = extensionManager;
             _featureManager = featureManager;
             _shellDescriptor = shellDescriptor;
         }
@@ -48,8 +44,8 @@ namespace CJP.Help.Providers
 
                         topics.Add(new Topic
                             {
-                                Identifier = friendlyName,
-                                Title = T(friendlyName.Replace("-", " ")),
+                                Identifier = feature.Extension.Id,
+                                Title = T(feature.Extension.Name),
                                 HelpItems = new[]
                                     {
                                         new HelpItem
@@ -57,6 +53,7 @@ namespace CJP.Help.Providers
                                                 FullText = T(File.ReadAllText(markdownFile)),
                                                 Identifier = friendlyName,
                                                 Title = T(friendlyName.Replace("-", " ")),
+                                                Position = 0,
                                                 TextFlavor = "markdown"
                                             }
                                     }

@@ -6,6 +6,7 @@ namespace CJP.Help.Models
     public class HelpItem
     {
         public string Identifier { get; set; }
+        public int Position { get; set; }
         public LocalizedString Title { get; set; }
         public LocalizedString ShortText { get; set; }
         public LocalizedString FullText { get; set; }

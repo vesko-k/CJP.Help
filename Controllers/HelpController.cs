@@ -17,7 +17,7 @@ namespace CJP.Help.Controllers
 
         public ActionResult Index()
         {
-            return View(_helpService.GetTopics());
+            return View(_helpService.GetTopics().OrderBy(t=>t.Title.Text));
         }
 
         public ActionResult ListTopic(string topic)
